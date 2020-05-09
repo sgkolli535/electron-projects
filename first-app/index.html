@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Grocery List</title>
+    </head>
+    <body>
+        <h1>Grocery List</h1>
+        <ul></ul>
+        <script>
+        	const electron = require('electron');
+        	const {ipcRenderer} = electron;
+        	const ul = document.querySelector('ul');
+        	ipcRenderer.on('item:add', function(event, item){
+        		const li = document.createElement('li');
+        		const itemtext = document.createTextNode(item);
+        		li.appendChild(itemText);
+        		ul.appendChild(li);
+        	});
+        	ipcRenderer.on('item:clear', function(event, item){
+        		ul.innerHTML = '';
+        	})
+        </script>
+    </body>
+</html>
